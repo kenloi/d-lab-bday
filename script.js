@@ -1,33 +1,37 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
-    height: 100%;
-    overflow: hidden;
+const messageElement = document.getElementById('message');
+const nameContainer = document.getElementById('nameContainer');
+const names = ['ARUSHI!!!', 'ERIN!!!!']; // Add all the names here
+
+function showMessage(message, fontSize, delay) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      messageElement.textContent = message;
+      messageElement.style.fontSize = fontSize + 'px';
+      resolve();
+    }, delay);
+  });
+}
+
+function showName(name, delay) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const div = document.createElement('div');
+      div.className = 'name';
+      div.textContent = name;
+      div.style.fontSize = '72px'; // Biggest font size for names
+      div.style.opacity = 1;
+      nameContainer.appendChild(div);
+      resolve();
+    }, delay);
+  });
+}
+
+async function animate() {
+  await showMessage('Happy August!!!', 36, 0);
+  await showMessage('Happy birthday...', 48, 2000); // Change the delay as needed
+  for (const [index, name] of names.entries()) {
+    await showName(name, index * 2000); // Change the delay between names here
   }
-  
-  .container {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-  }
-  
-  #message {
-    font-size: 36px;
-    color: #e44d26;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-weight: bold;
-  }
-  
-  .name {
-    font-size: 48px;
-    color: #555;
-    position: absolute;
-    opacity: 0;
-    transition: all 1s ease;
-  }
-  
+}
+
+animate();
