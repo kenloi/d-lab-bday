@@ -12,19 +12,32 @@ function showMessage(message, fontSize, delay) {
   });
 }
 
-function showName(name, delay) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const div = document.createElement('div');
-      div.className = 'name';
-      div.textContent = name;
-      div.style.fontSize = '72px'; // Biggest font size for names
-      div.style.opacity = 1;
-      nameContainer.appendChild(div);
-      resolve();
-    }, delay);
-  });
-}
+function getRandomPosition() {
+    const y = window.innerWidth;
+    const x = window.innerHeight;
+    return {
+      top: Math.floor(Math.random() * x) + 'px',
+      left: Math.floor(Math.random() * y) + 'px',
+    };
+  }
+  
+  function showName(name, delay) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const div = document.createElement('div');
+        div.className = 'name';
+        div.textContent = name;
+        div.style.fontSize = '72px'; // Biggest font size for names
+        const position = getRandomPosition();
+        div.style.top = position.top;
+        div.style.left = position.left;
+        div.style.opacity = 1;
+        nameContainer.appendChild(div);
+        resolve();
+      }, delay);
+    });
+  }
+  
 
 async function animate() {
   await showMessage('Happy August!!!', 36, 0);
