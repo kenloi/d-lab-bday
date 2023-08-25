@@ -1,6 +1,6 @@
 const messageElement = document.getElementById('message');
 const nameContainer = document.getElementById('nameContainer');
-const names = ['ARUSHI!!!', 'ERIN!!!!']; // Add all the names here
+const names = ['ARUSHI!!!', 'ERIN!!!!', 'RON', 'JULIA', 'MARENA', 'HANNAH']; // Add all the names here
 
 function showMessage(message, fontSize, delay) {
   return new Promise((resolve) => {
@@ -13,32 +13,45 @@ function showMessage(message, fontSize, delay) {
 }
 
 function getRandomPosition() {
-    const padding = 200; // Adjust this value to create a safe margin around the edges
-    const y = window.innerWidth - padding * 2;
-    const x = window.innerHeight - padding * 2;
+    const padding = 100; // Edge padding
+    const centerPadding = 200; // Padding around the center message
+  
+    let top = 0;
+    let left = 0;
+  
+    do {
+      top = Math.floor(Math.random() * (window.innerHeight - padding * 2)) + padding;
+      left = Math.floor(Math.random() * (window.innerWidth - padding * 2)) + padding;
+    } while (
+      top > window.innerHeight / 2 - centerPadding &&
+      top < window.innerHeight / 2 + centerPadding &&
+      left > window.innerWidth / 2 - centerPadding &&
+      left < window.innerWidth / 2 + centerPadding
+    );
+  
     return {
-      top: Math.floor(Math.random() * x) + padding + 'px',
-      left: Math.floor(Math.random() * y) + padding + 'px',
+      top: top + 'px',
+      left: left + 'px',
     };
   }  
   
-  function showName(name, delay) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const div = document.createElement('div');
-        div.className = 'name';
-        div.textContent = name;
-        div.style.fontSize = '72px'; // Biggest font size for names
-        const position = getRandomPosition();
-        div.style.top = position.top;
-        div.style.left = position.left;
-        div.style.opacity = 1;
-        nameContainer.appendChild(div);
-        resolve();
-      }, delay);
-    });
-  }
-  
+function showName(name, delay) {
+return new Promise((resolve) => {
+    setTimeout(() => {
+    const div = document.createElement('div');
+    div.className = 'name';
+    div.textContent = name;
+    div.style.fontSize = '72px'; // Biggest font size for names
+    const position = getRandomPosition();
+    div.style.top = position.top;
+    div.style.left = position.left;
+    div.style.opacity = 1;
+    nameContainer.appendChild(div);
+    resolve();
+    }, delay);
+});
+}
+
 
 async function animate() {
   await showMessage('Happy August!!!', 36, 0);
