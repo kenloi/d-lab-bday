@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+    background: linear-gradient(120deg, #d6b371 0%, #aabad7 100%);
     height: 100%;
     overflow: auto; /* Allows scrolling */
   }
@@ -14,29 +14,49 @@ body, html {
   
   .message-month {
     font-size: 36px;
-    color: #e44d26; /* Color for "Happy [Month]" */
+    color: #020202; /* Color for "Happy [Month]" */
     padding: 20px;
     font-weight: bold;
   }
   
   .message-babies {
     font-size: 36px;
-    color: #4caf50; /* Color for "To all the [Month] babies..." */
-    padding: 20px;
-    font-weight: bold;
-  }
-  
-  .message-happy-birthday {
-    font-size: 36px;
-    color: #f44336; /* Color for "[HAPPY BIRTHDAY]" */
+    color: #010000; /* Color for "To all the [Month] babies..." */
     padding: 20px;
     font-weight: bold;
   }
   
   .message-name {
-    font-size: 24px; /* Size for names */
+    font-size: 24px;
     padding: 20px;
     font-weight: bold;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 1s, transform 1s;
+  }
+  
+  @keyframes pop {
+    0% {
+      opacity: 0;
+      transform: scale(0.1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .message-happy-birthday {
+    font-size: 36px;
+    color: #040304;
+    padding: 20px;
+    font-weight: bold;
+    opacity: 0;
+    animation: pop 1s forwards;
   }
   
   
