@@ -15,7 +15,7 @@ function showMessage(message, fontSize, delay) {
 const positions = [];
 
 function getRandomPosition() {
-  const padding = 100; // Edge padding
+  const padding = 900; // Edge padding
   const centerPadding = 200; // Padding around the center message
   const nameHeight = 72; // Height of the name elements
 
