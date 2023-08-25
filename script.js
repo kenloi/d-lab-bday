@@ -14,7 +14,7 @@ function showMessage(message, fontSize, delay) {
 
 function getRandomPosition() {
     const padding = 50; // Edge padding
-    const centerPadding = 50; // Padding around the center message
+    const centerPadding = 500; // Padding around the center message
   
     let top = 0;
     let left = 0;
