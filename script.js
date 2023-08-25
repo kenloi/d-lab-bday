@@ -12,28 +12,43 @@ function showMessage(message, fontSize, delay) {
   });
 }
 
+const positions = [];
+
 function getRandomPosition() {
-    const padding = 50; // Edge padding
-    const centerPadding = 500; // Padding around the center message
-  
-    let top = 0;
-    let left = 0;
-  
-    do {
-      top = Math.floor(Math.random() * (window.innerHeight - padding * 2)) + padding;
-      left = Math.floor(Math.random() * (window.innerWidth - padding * 2)) + padding;
-    } while (
+  const padding = 100; // Edge padding
+  const centerPadding = 200; // Padding around the center message
+  const nameHeight = 72; // Height of the name elements
+
+  let top, left, overlapping;
+
+  do {
+    top = Math.floor(Math.random() * (window.innerHeight - padding * 2)) + padding;
+    left = Math.floor(Math.random() * (window.innerWidth - padding * 2)) + padding;
+
+    // Check for overlap with the center message
+    overlapping = (
       top > window.innerHeight / 2 - centerPadding &&
       top < window.innerHeight / 2 + centerPadding &&
       left > window.innerWidth / 2 - centerPadding &&
       left < window.innerWidth / 2 + centerPadding
     );
+
+    // Check for overlap with other names
+    for (const pos of positions) {
+      if (
+        top < pos.top + nameHeight && top + nameHeight > pos.top &&
+        left < pos.left + nameHeight && left + nameHeight > pos.left
+      ) {
+        overlapping = true;
+        break;
+      }
+    }
+  } while (overlapping);
+
+  positions.push({ top, left });
+  return { top: top + 'px', left: left + 'px' };
+}
   
-    return {
-      top: top + 'px',
-      left: left + 'px',
-    };
-  }  
   
 function showName(name, delay) {
 return new Promise((resolve) => {
@@ -55,9 +70,9 @@ return new Promise((resolve) => {
 
 async function animate() {
   await showMessage('Happy August!!!', 36, 0);
-  await showMessage('Happy birthday...', 48, 2000); // Change the delay as needed
+  await showMessage('Happy birthday...', 48, 1000); // Change the delay as needed
   for (const [index, name] of names.entries()) {
-    await showName(name, index * 1000); // Change the delay between names here
+    await showName(name, index * 800); // Change the delay between names here
   }
 }
 
