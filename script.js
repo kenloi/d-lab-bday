@@ -13,7 +13,7 @@ function showMessage(message, fontSize, delay) {
 }
 
 function getRandomPosition() {
-    const padding = 100; // Adjust this value to create a safe margin around the edges
+    const padding = 200; // Adjust this value to create a safe margin around the edges
     const y = window.innerWidth - padding * 2;
     const x = window.innerHeight - padding * 2;
     return {
