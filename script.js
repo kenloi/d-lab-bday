@@ -13,13 +13,14 @@ function showMessage(message, fontSize, delay) {
 }
 
 function getRandomPosition() {
-    const y = window.innerWidth;
-    const x = window.innerHeight;
+    const padding = 100; // Adjust this value to create a safe margin around the edges
+    const y = window.innerWidth - padding * 2;
+    const x = window.innerHeight - padding * 2;
     return {
-      top: Math.floor(Math.random() * x) + 'px',
-      left: Math.floor(Math.random() * y) + 'px',
+      top: Math.floor(Math.random() * x) + padding + 'px',
+      left: Math.floor(Math.random() * y) + padding + 'px',
     };
-  }
+  }  
   
   function showName(name, delay) {
     return new Promise((resolve) => {
