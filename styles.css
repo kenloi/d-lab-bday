@@ -12,10 +12,31 @@ body, html {
     width: 100%;
   }
   
-  .message {
+  .message-month {
     font-size: 36px;
-    color: #e44d26;
+    color: #e44d26; /* Color for "Happy [Month]" */
     padding: 20px;
     font-weight: bold;
   }
+  
+  .message-babies {
+    font-size: 36px;
+    color: #4caf50; /* Color for "To all the [Month] babies..." */
+    padding: 20px;
+    font-weight: bold;
+  }
+  
+  .message-happy-birthday {
+    font-size: 36px;
+    color: #f44336; /* Color for "[HAPPY BIRTHDAY]" */
+    padding: 20px;
+    font-weight: bold;
+  }
+  
+  .message-name {
+    font-size: 24px; /* Size for names */
+    padding: 20px;
+    font-weight: bold;
+  }
+  
   
