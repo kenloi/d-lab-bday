@@ -1,6 +1,6 @@
 const messageElement = document.getElementById('message');
 const nameContainer = document.getElementById('nameContainer');
-const names = ['ARUSHI!!!', 'ERIN!!!!', 'RON', 'JULIA', 'MARENA', 'HANNAH']; // Add all the names here
+const names = ['ARUSHI!!!', 'ERIN!!!', 'RON!!!', 'JULIA!!!', 'MARENA!!!', 'HANNAH']; // Add all the names here
 
 function showMessage(message, fontSize, delay) {
   return new Promise((resolve) => {
@@ -13,8 +13,8 @@ function showMessage(message, fontSize, delay) {
 }
 
 function getRandomPosition() {
-    const padding = 100; // Edge padding
-    const centerPadding = 200; // Padding around the center message
+    const padding = 50; // Edge padding
+    const centerPadding = 50; // Padding around the center message
   
     let top = 0;
     let left = 0;
@@ -57,7 +57,7 @@ async function animate() {
   await showMessage('Happy August!!!', 36, 0);
   await showMessage('Happy birthday...', 48, 2000); // Change the delay as needed
   for (const [index, name] of names.entries()) {
-    await showName(name, index * 2000); // Change the delay between names here
+    await showName(name, index * 1000); // Change the delay between names here
   }
 }
 
